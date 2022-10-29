@@ -1,0 +1,45 @@
+.table-striped>tbody>tr:nth-of-type(odd)>* {
+    --bs-table-accent-bg: var(--lightBackground);
+    color: var(--bs-table-striped-color);
+}
+
+.table>:not(caption)>*>* {
+
+    background-color: var(--lightBackground);
+
+}
+
+.table-bordered>:not(caption)>* {
+    border-width: 1px 0;
+    border-color: var(--greyText);
+    text-align: center;
+}
+
+
+
+
+
+
+
+.Pending {
+    color: var(--matteOrange) !important;
+    font-weight: bold;
+}
+
+.Completed {
+    color: rgb(2, 181, 2) !important;
+    font-weight: bold;
+}
+
+.Failed {
+    color: rgb(245, 68, 68) !important;
+    font-weight: bold;
+}
+
+.table-bordered>:not(caption)>*:hover {
+    background-color: var(--darkBackground) !important;
+}
+
+tr:hover {
+    background-color: coral !important;
+}

@@ -1,0 +1,124 @@
+.new-investment-sec {
+    padding: 0rem 2rem;
+}
+
+.new-investment-heading {
+    font-size: 2vw;
+    color: var(--matteOrange);
+    margin-top: 2rem;
+}
+
+.new-investment-plans {
+    margin-top: 2rem;
+}
+
+.new-investment-plans p {
+    color: white;
+    font-size: 1.3rem;
+}
+
+.investment-plans {
+    display: flex;
+    padding: 0 3rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.investment-plan {
+    margin-top: 1rem;
+    justify-content: center;
+    border-top: 2px solid #ffffff57;
+    border-left: 2px solid #ffffff57;
+    text-align: center;
+    background-color: var(--lightBackground);
+    width: fit-content;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+
+}
+
+.investment-plan form input {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    cursor: default;
+}
+
+.investment-plan h1 {
+    color: var(--matteOrange);
+    font-size: 2rem;
+}
+
+.investment-plan p {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.select-plan-btn {
+    background: white;
+    outline: none;
+    border: 2px solid var(--matteOrange);
+    width: 100%;
+    color: var(--matteOrange);
+    margin-top: 1.5rem;
+    font-weight: bold;
+    padding: 0.4rem 0;
+    border-radius: 10px;
+    transition: 0.3s all ease-in-out;
+}
+
+.select-plan-btn:hover {
+    background-color: var(--matteOrange);
+    color: white;
+}
+
+.select-plan-btn:focus {
+    background-color: var(--matteOrange);
+    color: white;
+}
+
+@media screen and (max-width:1030px) {
+    .investment-plans {
+        padding: 0;
+    }
+
+}
+
+@media screen and (max-width:770px) {
+    .landing-plans {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .new-investment-heading {
+        font-size: 1.6rem;
+    }
+
+    .investment-plan h1 {
+        font-size: 1.8rem;
+    }
+
+    .investment-plan p {
+        font-size: 1.1rem;
+        line-height: 1rem;
+    }
+
+    .investment-plan {
+        padding: 1rem;
+        width: 60%;
+    }
+
+    .investment-plans {
+        justify-content: center;
+    }
+
+}
+
+@media screen and (max-width:550px) {
+    .investment-plan {
+        width: 100%;
+    }
+
+}

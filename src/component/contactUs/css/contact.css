@@ -1,0 +1,83 @@
+.contact-us {
+    background-color: var(--darkBackground);
+    padding: 2rem 2rem;
+    overflow: hidden;
+}
+
+.contact-heading {
+    text-align: center;
+    font-size: 3rem;
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    /* padding-left: 2rem; */
+    justify-content: flex-end;
+}
+
+.headphone-boy {
+    width: auto;
+    height: 27rem;
+}
+
+.contact-form-sec {
+
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.contact-form {
+    /* padding-right: 2rem; */
+}
+
+.contact-form label {
+    display: block;
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+
+}
+
+.contact-form input {
+    outline: none;
+    border: none;
+    background-color: var(--lightBackground);
+    width: 40vw;
+    height: 1.5rem;
+    border-radius: 5px;
+    color: orange;
+    padding: 1.2rem 1rem;
+    font-size: 1rem;
+}
+
+.contact-form textarea {
+    padding: 0.5rem 1rem;
+    outline: none;
+    border: none;
+    color: orange;
+    width: 40vw;
+    font-size: 1.2rem;
+    background-color: var(--lightBackground);
+    max-width: 40vw;
+    min-width: 40vw;
+    min-height: 100px;
+    max-height: 150px;
+}
+
+.contact-btn-submit {
+    background-color: white !important;
+    height: 2.5rem !important;
+    color: var(--Orange);
+    width: 100% !important;
+    border: 2px solid var(--Orange) !important;
+    transition: 0.3s all ease-in-out;
+    cursor: pointer;
+    padding: 0 !important;
+}
+
+.contact-btn-submit:hover {
+    background-color: var(--Orange) !important;
+    color: white;
+}

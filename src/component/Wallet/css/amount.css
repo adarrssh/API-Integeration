@@ -1,0 +1,71 @@
+.amountComponent {
+    position: relative;
+
+}
+
+.walletContent {
+    position: absolute;
+    left: 2.5vw;
+    top: 33%;
+
+
+}
+
+.wallet-balance {
+    color: white;
+    font-size: 3vw;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.wallet-add-money-btn,
+.wallet-withdraw-money-btn {
+    color: var(--Orange);
+    border: 2px solid var(--Orange);
+    border-radius: 20px;
+    padding: 0.3vw 2vw;
+    font-weight: bold;
+    width: 12vw;
+    font-size: 1.1vw;
+    margin-top: 0.4vw;
+    transition: 0.3s all ease-in-out;
+}
+
+.wallet-add-money-btn:hover,
+.wallet-withdraw-money-btn:hover {
+    background-color: var(--Orange);
+    color: white;
+}
+
+.wallet-withdraw-money-btn {
+    margin-top: 0.4vw;
+}
+
+.walletLogo {
+    width: 20vw;
+
+}
+
+@media screen and (max-width:500px) {
+    .wallet-balance {
+        font-size: 10vw;
+    }
+
+    .wallet-add-money-btn,
+    .wallet-withdraw-money-btn {
+        padding: 2.3vw 3vw;
+        width: 37vw;
+        margin-top: 2vw;
+        font-size: 3vw;
+    }
+
+    .walletContent {
+        left: 8vw;
+        top: 33%;
+    }
+
+    .amountComponent {
+        margin-top: 0rem;
+    }
+
+}

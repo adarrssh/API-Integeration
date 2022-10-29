@@ -1,0 +1,12 @@
+.nav-register {
+    background-color: white;
+    width: 100vw;
+    /* height: 20vh; */
+    display: flex;
+    justify-content: center;
+}
+
+.nav-register img {
+    width: auto;
+    height: 50px;
+}

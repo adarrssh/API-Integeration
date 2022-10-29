@@ -1,0 +1,155 @@
+body {
+    background-color: var(--darkBackground);
+}
+
+.register {
+    background-color: var(--darkBackground);
+    /* height: ; */
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.register p {
+    font-size: 25px;
+    padding: 0.6rem 0;
+    color: white;
+}
+
+.greet {
+    font-weight: 700;
+}
+
+.register p a {
+    color: white;
+}
+
+.register p a:hover {
+    color: #0777cd;
+}
+
+.register-component {
+    background: var(--lightBackground);
+    border: 1px solid var(--lightBackground);
+    border-radius: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    width: 32rem;
+    align-items: center;
+    padding: 2rem 0;
+    row-gap: 1rem;
+}
+
+h1 {
+    color: white;
+}
+
+.register-input {
+    width: 18rem;
+}
+
+.register-input label {
+    color: white;
+    font-size: 18px;
+}
+
+.register-input input {
+    width: 100%;
+    padding-left: 1rem;
+    outline: none;
+    height: 2rem;
+    border-radius: 10px;
+    border: 2px solid white;
+    margin-top: 0.2rem;
+    font-size: 18px;
+}
+
+.register-input input:focus {
+    border: 2px solid var(--darkBlue);
+}
+
+.signupBtn,
+.login-Btn {
+    width: 18rem;
+    background-color: white;
+    border: 2px solid var(--darkBlue);
+    border-radius: 10px;
+    height: 2.5rem;
+    font-family: "Segoe UI";
+    font-weight: 500;
+    font-size: 18px;
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--darkBlue);
+    transition: 0.2s all ease-in-out;
+}
+
+.signupBtn:hover,
+.login-Btn:hover {
+    background-color: var(--darkBlue);
+    color: white;
+}
+
+@media screen and (max-width:500px) {
+
+    .register-component {
+        width: 90%;
+    }
+
+    .register-input input {
+        height: 2.5rem;
+    }
+
+    .register-input {
+        width: 100%;
+        margin-bottom: 1.3rem;
+
+    }
+
+    .register {
+        margin-top: 10px;
+        justify-content: center;
+        height: 70vh;
+    }
+
+    .register-component {
+        row-gap: 0.5rem;
+        padding: 1rem 0;
+    }
+
+    .btn {
+        width: 100%;
+        height: 2.5rem;
+        border-width: 4px;
+    }
+
+    .signup-component h1 {
+        font-size: 2rem;
+    }
+
+    #incorrect-creds {
+
+        font-size: 0.8rem !important;
+    }
+}
+
+.logOrSign {
+    cursor: pointer;
+    font-size: 1rem !important;
+    text-decoration: underline;
+    transition: 0.3s all ease-in-out;
+}
+
+.logOrSign:hover {
+    color: var(--darkBlue);
+}
+
+#incorrect-creds {
+    color: red;
+    font-size: 1rem;
+
+}

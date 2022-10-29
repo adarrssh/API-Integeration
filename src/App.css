@@ -1,0 +1,34 @@
+:root {
+  --matteOrange: #CCA15F;
+  --darkBlue: #004273;
+  --Orange: #FFA217;
+  --darkBackground: #353535;
+  --darkOrange: #FB6428;
+  --lightBackground: #4E4E4E;
+  --greyText: #AFADAD;
+  --greenBlue: #60949E;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+/* body {
+  height: 100vh;
+  width: 100vw;
+} */
+
+
+.loader {
+
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

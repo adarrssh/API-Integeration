@@ -1,0 +1,14 @@
+.my-btn {
+    border: 2px solid #CCA15F;
+    font-size: 20px;
+    border-radius: 16px;
+    font-weight: 600;
+    color: white;
+    height: 100%;
+}
+
+.my-btn:hover {
+    color: var(--matteOrange);
+    background-color: white;
+
+}

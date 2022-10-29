@@ -1,0 +1,294 @@
+.hero-video {
+    width: auto;
+    position: absolute;
+    top: 0;
+    height: 120vh;
+    z-index: 1;
+
+}
+
+.hero-section {
+    height: 95vh;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--darkBackground);
+}
+
+.hero-text {
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(2px);
+    filter: brightness(-1);
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.hero-text h1 {
+    color: var(--Orange);
+    font-size: 3rem;
+}
+
+.hero-text p {
+    color: white;
+    font-size: 1.4rem;
+    text-align: left;
+}
+
+.hero-btn {
+    display: block;
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--Orange);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+.hero-btn:hover {
+    background-color: rgb(155, 102, 5);
+}
+
+.landing-heading {
+    font-size: 3rem;
+}
+
+.landing-para {
+    font-size: 1.7rem;
+}
+
+.landing-wallet-sec {
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 3rem 1rem;
+    align-items: center;
+}
+
+.easy-withdrawal {
+
+    color: var(--darkBackground);
+}
+
+.easy-para {
+
+    color: var(--greenBlue);
+}
+
+.easy-img {
+    width: auto;
+    height: 17rem;
+}
+
+.first-withdrawing {
+    background-color: var(--darkBackground);
+    display: flex;
+    justify-content: space-around;
+    padding: 3rem 1rem;
+    align-items: center;
+}
+
+.withdraw-first {
+    color: white;
+}
+
+.businessGirl {
+    width: auto;
+    height: 20rem;
+}
+
+.businessGirlPara {
+    color: var(--matteOrange);
+}
+
+.businessGirl-btn {
+    margin-top: 1rem;
+    padding: 0.8rem 1.5rem;
+    background-color: white;
+    color: var(--matteOrange);
+    border: 3px solid var(--matteOrange);
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s all ease-in-out;
+}
+
+.businessGirl-btn:hover {
+    background-color: var(--matteOrange);
+    color: white;
+}
+
+.landing-plans-sec {
+    background-color: white;
+    padding: 3rem 1rem;
+    /* text-align: center; */
+}
+
+.landing-plan-para {
+    text-align: center;
+
+}
+
+.landing-plans {
+    display: flex;
+    padding: 0 3rem;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* margin-top: 1rem; */
+}
+
+.landing-plan {
+    margin-top: 1rem;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--darkBackground);
+    width: fit-content;
+    padding: 1.5rem 2rem;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+
+    background: linear-gradient(120deg, #1E2130, #766A52);
+}
+
+.landing-plan h1 {
+    color: var(--matteOrange);
+    font-size: 2rem;
+}
+
+.landing-plan p {
+    color: white;
+    font-size: 1.2rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 4rem;
+
+}
+
+.social-links img {
+    width: auto;
+    height: 5rem;
+    cursor: pointer;
+
+}
+
+@media screen and (max-width: 770px) {
+    .landing-para {
+        font-size: 1.4rem;
+    }
+
+    .easy-img {
+        height: 14rem;
+    }
+
+    .landing-heading {
+        font-size: 2rem;
+    }
+
+    .landing-plans {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-heading {
+        font-size: 2rem;
+    }
+
+    .headphone-boy {
+        height: 20rem !important;
+    }
+
+    .social-links img {
+        height: 3rem;
+    }
+
+
+}
+
+@media screen and (max-width:430px) {
+    .hero-video {
+        right: -235px;
+        height: 100vw;
+    }
+
+    .hero-text p {
+        font-size: 1.3rem;
+        text-align: center;
+    }
+
+    .hero-btn {
+        display: inline;
+    }
+
+    .landing-wallet-sec {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .easy-img {
+        height: 10rem;
+    }
+
+    .landing-para {
+        font-size: 1.2rem;
+    }
+
+    .landing-plans {
+        padding: 0;
+    }
+
+    .landing-plan {
+        width: 80%;
+    }
+
+    .first-withdrawing {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .businessGirl {
+        height: 10rem;
+    }
+
+    .businessGirlPara {
+        text-align: left;
+    }
+
+    .contact-heading {
+        font-size: 2rem !important;
+    }
+
+    .headphone-boy {
+        display: none;
+    }
+
+    .form-container {
+        justify-content: center !important;
+    }
+
+    .contact-form input,
+    textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .contact-form input {
+        height: 3rem !important;
+    }
+
+    .contact-btn-submit {
+        width: 102% !important;
+    }
+
+}

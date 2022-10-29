@@ -1,0 +1,47 @@
+.redWoman {
+    width: auto;
+    height: 10rem;
+    z-index: 1;
+}
+
+.amount {
+    text-align: center;
+    padding: 20px 10px;
+    padding-top: 6rem;
+    width: 21rem;
+    background-color: #4E4E4E;
+    border-radius: 22px;
+    margin-top: -4.5rem;
+
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.totalMoney {
+    color: #CCA15F;
+    font-weight: 700;
+    font-size: 25px;
+    font-family: 'Segoe UI';
+}
+
+h2 {
+    color: white;
+    font-family: 'Segoe UI';
+}
+
+@media only screen and (max-width: 430px) {
+    .amount {
+        width: 18rem;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .amount {
+        width: 16rem;
+    }
+}
