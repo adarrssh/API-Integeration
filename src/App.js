@@ -13,9 +13,11 @@ import Wallet from "./component/Wallet/Wallet";
 import ProfileVerification from "./component/ProfileVerification/ProfileVerification";
 import MyInvestment from "./component/MyInvestment/MyInvestment";
 import MainNabar from './component/Navbar/MainNavbar'
+import { useEffect } from "react";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [signupDetails, setsignupDetails] = useState({
     Name: "",
     Email: "",
@@ -23,12 +25,14 @@ function App() {
     Phone: "",
     Balance: "1000",
     Aadhaar_Number: "",
-    Verified: "false"
+    Account_No: "",
+    IFSC_Code: "",
   })
 
-  // useEffect(() => {
-  //   console.log(window.location);
-  // }, [window.location])
+
+  useEffect(() => {
+    console.log(isLoggedIn);
+  }, [isLoggedIn])
 
 
 
@@ -42,7 +46,12 @@ function App() {
           <Route index path="/" element={<Landing />} />
 
           <Route path="login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="signup" element={<Signup signupDetails={signupDetails} setsignupDetails={setsignupDetails} />} />
+          <Route path="signup" element={<Signup
+            signupDetails={signupDetails}
+            setsignupDetails={setsignupDetails}
+            isLoggedIn={isLoggedIn}
+            setIsLoggedIn={setIsLoggedIn}
+          />} />
           <Route path="dashboard" element={
             <Protected isLoggedIn={isLoggedIn}>
               <Dashboard />
@@ -60,20 +69,30 @@ function App() {
           } />
 
           <Route path="profile" element={
-            <Protected isLoggedIn={isLoggedIn}>
-              <Profile signupDetails={signupDetails} setsignupDetails={setsignupDetails} />
-            </Protected>
+              <Profile
+                signupDetails={signupDetails}
+                setsignupDetails={setsignupDetails}
+
+              />
+           
           } />
-          <Route path="wallet" element={
-            <Protected isLoggedIn={isLoggedIn}>
+          {/* <Route path="wallet" element={
+            <Protected>
               <Wallet />
             </Protected>
-          } />
+          } /> */}
+
+          <Route path="wallet"
+            element={<Wallet/>}
+          />
 
           <Route path="profileVerification" element={
-            <Protected isLoggedIn={isLoggedIn}>
-              <ProfileVerification signupDetails={signupDetails} setsignupDetails={setsignupDetails} />
-            </Protected>
+
+            <ProfileVerification
+              signupDetails={signupDetails}
+              setsignupDetails={setsignupDetails}
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn} />
           } />
 
           <Route path="myInvestments" element={

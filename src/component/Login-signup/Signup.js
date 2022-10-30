@@ -6,7 +6,8 @@ var validator = require("email-validator")
 // import userCredentials from '../../userCredentials/userCredentials';
 
 
-function Signup({ signupDetails, setsignupDetails }) {
+function Signup({ signupDetails, setsignupDetails, setIsLoggedIn, IsLoggedIn }) {
+    const url = 'https://growpital.herokuapp.com/auth/email'
     const navigate = useNavigate()
 
     const handleChange = e => {
@@ -19,22 +20,27 @@ function Signup({ signupDetails, setsignupDetails }) {
     }
 
 
-    const url = 'https://growpital.herokuapp.com/auth/signup';
-
-
-
     const submitSignupForm = (e) => {
 
         e.preventDefault();
-        console.log(signupDetails.Email);
         if (validator.validate(signupDetails.Email)) {
-            navigate("/profileVerification")
+            axios.post(url, {
+                Email: signupDetails.Email,
+            })
+                .then((response) => {
+                    console.log(response);
+                    setIsLoggedIn(true)
+                    navigate("/profileVerification")
+                })
+                .catch((err) => {
+                    console.log(err);
+                    // setIsLoggedIn(false)
+                    alert(err.response.data.error)
+                })
+
         } else {
             alert("valid email required")
         }
-
-
-
 
         // navigate("/login")
     }
