@@ -1,8 +1,9 @@
-.bigContainer{
+.bigContainer {
     background-color: #353535;
     height: 100vh;
 }
-.greeting{
+
+.greeting {
     width: 24rem;
     font-size: 23px;
     font-weight: 600;
@@ -12,7 +13,8 @@
     display: flex;
     flex-wrap: wrap;
 }
-.verificationComponent{
+
+.verificationComponent {
 
     width: 100vw;
     display: flex;
@@ -22,32 +24,37 @@
     padding-top: 1rem;
     background-color: #353535;
 }
-.verifi{
+
+.verifi {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.dataComponent{
+
+.dataComponent {
     width: 60vw;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
 }
-label{
+
+label {
     font-size: 20px;
     font-weight: 600;
     font-family: 'Segoe UI';
     margin-bottom: 0.4rem;
     color: #CCA15F;
 }
-.data{
+
+.data {
     width: 25vw;
     margin: 1rem;
-    padding: 18px 28px ;
+    padding: 18px 28px;
     border-radius: 20px;
     background-color: #4E4E4E;
 }
-.my-btn{
+
+.my-btn {
     width: 10rem;
     font-size: 18px;
     font-weight: 600;
@@ -56,54 +63,136 @@ label{
     border: none;
     margin: 1rem 0 1rem 0;
 }
-@media only screen and (max-width: 1200px){
-    .dataComponent{
+
+.otp-modal-body,
+.otp-modal-header {
+    background-color: var(--darkBackground);
+    color: white;
+    border: none;
+
+}
+
+.modal {
+    padding-right: 0 !important;
+    /* background-color: rgba(255, 255, 255, 0.503); */
+    backdrop-filter: blur(2px);
+}
+
+.modal-body {
+    padding-top: 2rem;
+}
+
+.modal-header {
+    position: absolute;
+    padding: 0;
+    right: 4%;
+    top: 2%;
+    z-index: 1;
+}
+
+.modal-content {
+    border: 2px solid var(--matteOrange);
+    border-radius: 10px;
+}
+
+.otp-input {
+    border: 2px solid var(--matteOrange);
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--lightBackground);
+    border-radius: 10px;
+    outline: none;
+    color: white;
+}
+
+.resend-otp {
+    color: var(--matteOrange);
+    text-decoration: underline;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    margin-right: 3rem;
+}
+
+.resend-otp:hover {
+    background: transparent;
+    color: var(--Orange);
+}
+
+.verify-otp {
+    background-color: white;
+    color: var(--matteOrange);
+    border: 1px solid var(--matteOrange);
+    transition: background-color 0.2s ease-in-out;
+
+}
+
+.verify-otp:hover {
+    background-color: var(--matteOrange);
+    color: white;
+    border: 1px solid var(--matteOrange);
+}
+
+@media only screen and (max-width: 1200px) {
+    .dataComponent {
         width: 80vw;
     }
-    .data{
+
+    .data {
         width: 35vw;
     }
 }
-@media only screen and (max-width: 800px){
-    .dataComponent{
+
+@media only screen and (max-width: 800px) {
+    .dataComponent {
         width: 90vw;
     }
-    .data{
+
+    .data {
         width: 40vw;
     }
 }
-@media only screen and (max-width: 640px){
-    .greeting{
+
+@media only screen and (max-width: 640px) {
+    .greeting {
         font-size: 18px;
         font-weight: 400;
     }
-    .dataComponent{
+
+    .dataComponent {
         width: 100vw;
     }
-    label{
+
+    label {
         font-size: 16px;
     }
-    .data{
+
+    .data {
         width: 40vw;
         margin: 0.5rem;
-    padding: 15px 20px ;
+        padding: 15px 20px;
     }
 }
-@media only screen and (max-width: 550px){
-    .dataComponent{
+
+@media only screen and (max-width: 550px) {
+    .dataComponent {
         width: 70vw;
     }
-    label{
-font-size: 18px;
+
+    label {
+        font-size: 18px;
     }
-    .data{
+
+    .data {
         width: 70vw;
         margin-bottom: 0.9rem;
         padding: 18px 20px 28px 20px;
     }
 }
-@media only screen and (max-width: 430px){
-   .greeting{
-    width: 14rem;
-   }
+
+@media only screen and (max-width: 430px) {
+    .greeting {
+        width: 14rem;
+    }
 }

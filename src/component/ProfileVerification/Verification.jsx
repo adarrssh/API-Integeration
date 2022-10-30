@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 
-const Verification = ({ signupDetails, setsignupDetails, isLoggedIn, setIsLoggedIn }) => {
+const Verification = ({ signupDetails, setsignupDetails, isLoggedIn, setIsLoggedIn,setModalShow }) => {
 
     const url = 'https://growpital.herokuapp.com/auth/signup'
     const navigate = useNavigate()
 
     const submitVerificationForm = (e) => {
+        setModalShow(true)
         e.preventDefault()
         console.log(signupDetails);
 
@@ -18,7 +19,7 @@ const Verification = ({ signupDetails, setsignupDetails, isLoggedIn, setIsLogged
             Email: signupDetails.Email,
             Password: signupDetails.Password,
             Phone: signupDetails.Phone,
-            Balance: "1000",
+            Balance: "10000",
             Aadhaar_Number: signupDetails.Aadhaar_Number,
             Account_No: signupDetails.Account_No,
             IFSC_Code: signupDetails.IFSC_Code
@@ -27,8 +28,8 @@ const Verification = ({ signupDetails, setsignupDetails, isLoggedIn, setIsLogged
             .then((response) => {
                 console.log(response);
                 alert(response.data.message)
-                setsignupDetails("")
-                navigate("/dashboard")
+                // setsignupDetails("")
+                navigate("/profile")
             })
             .catch((err) => {
                 console.log(err.response.data.message);
@@ -61,7 +62,9 @@ const Verification = ({ signupDetails, setsignupDetails, isLoggedIn, setIsLogged
 
 
     return (
+
         <div className="verifi">
+
             <form className="dataComponent" onSubmit={submitVerificationForm}>
                 <div className="data">
                     <label htmlFor="name">Name</label><br />

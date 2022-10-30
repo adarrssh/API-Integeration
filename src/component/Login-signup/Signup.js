@@ -9,6 +9,7 @@ var validator = require("email-validator")
 
 
 function Signup({ signupDetails, setsignupDetails, setIsLoggedIn, IsLoggedIn }) {
+   
     const [isloading, setIsLoading] = useState(false)
 
     const url = 'https://growpital.herokuapp.com/auth/email'
