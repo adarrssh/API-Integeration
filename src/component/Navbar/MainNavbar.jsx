@@ -6,7 +6,7 @@ import close from "../../images/close.svg"
 import { useNavigate, NavLink } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 
-const MainNavbar = ({isLoggedIn, setIsLoggedIn}) => {
+const MainNavbar = ({isLoggedIn, setIsLoggedIn,signupDetails}) => {
     const[IsnavOpen, setIsnavOpen]=useState(false);
     
     const navigate = useNavigate()
@@ -22,7 +22,7 @@ const MainNavbar = ({isLoggedIn, setIsLoggedIn}) => {
                     <li onClick={()=>{navigate("/wallet");setIsnavOpen(false)}}>Wallet</li>
                     <li onClick={()=>{navigate("/contactUs");setIsnavOpen(false)}}>Contact Us</li>
                     <li onClick={()=>{navigate("/profile");setIsnavOpen(false)}}>Profile</li>
-                    <li className='mobile-logout' onClick={()=>{localStorage.clear("token")}}>Logout</li>
+                    <li className='mobile-logout' onClick={()=>{localStorage.clear()}}>Logout</li>
                 </ul>
         </nav>
        <nav className='main-navbar'>
@@ -46,13 +46,13 @@ const MainNavbar = ({isLoggedIn, setIsLoggedIn}) => {
                         {
                             isLoggedIn ? <Dropdown>
                                             <Dropdown.Toggle  id="dropdown-basic">
-                                                <div className="avatar"></div> Jhon Doe
+                                                <div className="avatar"></div> {signupDetails.Name}
                                             </Dropdown.Toggle>
 
                                             <Dropdown.Menu>
                                                 <Dropdown.Item id='dropdown-link' ><NavLink  to="/profile">Profile</NavLink> </Dropdown.Item>
                                                 <Dropdown.Item id='dropdown-link'> <NavLink  to="/contactUs">Contact Us</NavLink></Dropdown.Item>
-                                                <Dropdown.Item id='dropdown-link'><NavLink onClick={()=>{localStorage.clear("token"); setIsLoggedIn(false)}}>Logout</NavLink></Dropdown.Item>
+                                                <Dropdown.Item id='dropdown-link'><NavLink onClick={()=>{localStorage.clear(); setIsLoggedIn(""); navigate("/login"); console.log(localStorage);}}>Logout</NavLink></Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>: (<div className="button-grp">
                                                         <button onClick={()=>navigate('/login')} className='login-btn'>Login</button>

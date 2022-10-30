@@ -7,40 +7,31 @@ import axios  from 'axios'
 
 
 const Profile = ({signupDetails,setsignupDetails}) => {
-    const [loading, setLoading] = useState(false)
+    const [isLoading, setIsLoading]= useState(false)
+
+    // console.log(signupDetails);
 
   const [details, setDetails] = useState()
 
     const url = "https://growpital.herokuapp.com/auth/profile"
 
   useEffect(()=>{
-    console.log("inside");
-
-    setLoading(true)
+   setIsLoading(true)
     axios.get(url, { headers: { token: localStorage.getItem("token")  } })
     .then(response => {
         // If request is good...
-        console.log(response);
+        // console.log(response);
         setsignupDetails(response.data.data)
-        setLoading(false)
+        setIsLoading(false)
      })
     .catch((error) => {
         console.log(error);
-        setLoading(false)
+        setIsLoading(false)
 
      });
-   
   }, [])
 
 
-    // const user_data = {
-    //     email: "abc@gmail.com",
-    //     name: "Jhon Doe",
-    //     contact: "1234567890",
-    //     IFSC: "87654323456789",
-    //     account_number: "2345675467345234",
-    //     adhaar_number: "12345678909876"
-    // }
 
     const setValues=(e)=>{
         
@@ -57,7 +48,8 @@ const Profile = ({signupDetails,setsignupDetails}) => {
 
   return (
    <div>
-    { loading ? (<div className="loader">
+    {
+        isLoading ? (<div className="loader">
           <ProgressBar
             height="80"
             width="80"
@@ -67,9 +59,9 @@ const Profile = ({signupDetails,setsignupDetails}) => {
             borderColor = '#FFA217'
             barColor = '#CCA15F'
           />
-        </div>): ( <>
-    
-    <div className='profile-sec'>
+        </div>):
+        
+        (<div className='profile-sec'>
         <div className="edit-profile-sec" style={IsEditProfileOpen?  {display:"flex"}: {display:"none"}} >
             <div className="edit-profile-modal">
                 <img src={close}  alt="" className='close-edit-profile' onClick={()=>{setIsEditProfileOpen(false)}}/>
@@ -176,8 +168,8 @@ const Profile = ({signupDetails,setsignupDetails}) => {
                 </div>
             </div>
         </div>
-    </div>
-    </>)}
+    </div>)
+    }
    </div>
   )
 }

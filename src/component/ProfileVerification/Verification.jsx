@@ -26,10 +26,9 @@ const Verification = ({ signupDetails, setsignupDetails, isLoggedIn, setIsLogged
         })
             .then((response) => {
                 console.log(response);
-                setIsLoggedIn(true)
                 alert(response.data.message)
                 setsignupDetails("")
-                navigate("/login")
+                navigate("/dashboard")
             })
             .catch((err) => {
                 console.log(err.response.data.message);

@@ -10,32 +10,31 @@ import { ProgressBar } from  'react-loader-spinner'
 
 const Wallet = () => {
 
-    const [loading, setLoading] = useState(false)
+    const [isloading, setIsLoading] = useState(false)
 
   useEffect(()=>{
-    setLoading(true)
+    setIsLoading(true)
 
     setTimeout(() => {
-      setLoading(false)
+      setIsLoading(false)
     }, 2000);
   }, [])
 
 
     return(
        <div>
-         {loading ? (<div className="loader">
-          <ProgressBar
-            height="80"
-            width="80"
-            ariaLabel="progress-bar-loading"
-            wrapperStyle={{}}
-            wrapperClass="progress-bar-wrapper"
-            borderColor = '#FFA217'
-            barColor = '#CCA15F'
-          />
-        </div>):(<>
-        
-        <div className="walletContainer">
+       {
+        isloading? (<div className="loader">
+            <ProgressBar
+                height="80"
+                width="80"
+                ariaLabel="progress-bar-loading"
+                wrapperStyle={{}}
+                wrapperClass="progress-bar-wrapper"
+                borderColor='#FFA217'
+                barColor='#CCA15F'
+            />
+        </div>):( <div className="walletContainer">
             <Withdrawal/>
             <AddMoney />
         <div className="upperComponent">
@@ -49,10 +48,8 @@ const Wallet = () => {
        <h4 className='trans-heading'>All Transactions</h4>
        <Transactions />
        </div>
-        </div>
-        
-       
-        </>)}
+        </div>)
+       }
        </div>
     )
 }

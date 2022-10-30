@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import './css/Register.css';
 // import userCredentials from '../../userCredentials/userCredentials';
 import { useNavigate } from "react-router-dom";
+import { ProgressBar } from 'react-loader-spinner'
+
 import axios from 'axios';
 var validator = require("email-validator");
 
@@ -9,10 +11,6 @@ var validator = require("email-validator");
 
 
 function Login({ isLoggedIn, setIsLoggedIn }) {
-
-    // const changeLoggedInState = (value) => {
-
-    // }
 
     const url = 'https://growpital.herokuapp.com/auth/login';
 
@@ -24,7 +22,6 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
     const [password, setpassword] = useState("");
 
     // eslint-disable-next-line no-unused-vars
-    // const [authenticated, setauthenticated] = useState((localStorage.getItem("authenticated") || false));
 
     const handleSubmit = (e) => {
 
@@ -38,20 +35,16 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
                 Email: userMail,
                 Password: password
             })
-            // if response is good
+                // if response is good
                 .then((response) => {
-                    console.log(response);
-                    setIsLoggedIn(true)
                     setIsLoading(false)
-
-                    alert("Login Successfull")
                     localStorage.setItem("token", response.data.token)
+                    setIsLoggedIn(localStorage.getItem("token"))
                     navigate("/profile")
                 })
-            // if some error occured
+                // if some error occured
                 .catch((err) => {
                     setIsLoading(false)
-
                     console.log(err);
                     // setIsLoggedIn(false)
                     alert(err.response.data.error)
@@ -65,8 +58,18 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
 
     };
 
-    if(isLoading){
-        return <h1>Loading..</h1>
+    if (isLoading) {
+        return (<div className="loader">
+            <ProgressBar
+                height="80"
+                width="80"
+                ariaLabel="progress-bar-loading"
+                wrapperStyle={{}}
+                wrapperClass="progress-bar-wrapper"
+                borderColor='#FFA217'
+                barColor='#CCA15F'
+            />
+        </div>)
     }
     return (
         <>

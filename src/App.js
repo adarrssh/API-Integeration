@@ -12,12 +12,15 @@ import Protected from "./component/Protected/Protected";
 import Wallet from "./component/Wallet/Wallet";
 import ProfileVerification from "./component/ProfileVerification/ProfileVerification";
 import MyInvestment from "./component/MyInvestment/MyInvestment";
-import MainNabar from './component/Navbar/MainNavbar'
+import MainNavbar from './component/Navbar/MainNavbar'
+import { ProgressBar } from 'react-loader-spinner'
+
 import { useEffect } from "react";
 
 function App() {
-  
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
+  const [isLoading, setIsLoading] = useState(false)
   const [signupDetails, setsignupDetails] = useState({
     Name: "",
     Email: "",
@@ -30,9 +33,9 @@ function App() {
   })
 
 
-  useEffect(() => {
-    console.log(isLoggedIn);
-  }, [isLoggedIn])
+  // useEffect(() => {
+  //   console.log(isLoggedIn);
+  // }, [isLoggedIn])
 
 
 
@@ -41,17 +44,15 @@ function App() {
 
       <BrowserRouter>
 
-        <MainNabar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <MainNavbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} signupDetails={signupDetails} />
+
+
         <Routes>
           <Route index path="/" element={<Landing />} />
 
           <Route path="login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
-          <Route path="signup" element={<Signup
-            signupDetails={signupDetails}
-            setsignupDetails={setsignupDetails}
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-          />} />
+          <Route path="signup" element={<Signup signupDetails={signupDetails} setsignupDetails={setsignupDetails} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
+
           <Route path="dashboard" element={
             <Protected isLoggedIn={isLoggedIn}>
               <Dashboard />
@@ -69,30 +70,25 @@ function App() {
           } />
 
           <Route path="profile" element={
-              <Profile
-                signupDetails={signupDetails}
-                setsignupDetails={setsignupDetails}
-
-              />
-           
+            <Protected isLoggedIn={isLoggedIn}>
+              <Profile signupDetails={signupDetails}
+                setsignupDetails={setsignupDetails} />
+            </Protected>
           } />
-          {/* <Route path="wallet" element={
-            <Protected>
+
+          <Route path="wallet" element={
+            <Protected isLoggedIn={isLoggedIn}>
               <Wallet />
             </Protected>
-          } /> */}
-
-          <Route path="wallet"
-            element={<Wallet/>}
-          />
+          } />
 
           <Route path="profileVerification" element={
-
-            <ProfileVerification
-              signupDetails={signupDetails}
-              setsignupDetails={setsignupDetails}
-              isLoggedIn={isLoggedIn}
-              setIsLoggedIn={setIsLoggedIn} />
+            <Protected isLoggedIn={isLoggedIn}>
+              <ProfileVerification
+                signupDetails={signupDetails}
+                setsignupDetails={setsignupDetails}
+                setIsLoggedIn={setIsLoggedIn} />
+            </Protected>
           } />
 
           <Route path="myInvestments" element={
@@ -103,6 +99,8 @@ function App() {
 
         </Routes>
       </BrowserRouter>
+
+
     </div>
   );
 }

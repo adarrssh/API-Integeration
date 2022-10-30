@@ -3,7 +3,7 @@ import "./css/dashboard.css"
 import girlBudget from "../../images/girlBudget.png"
 import businessMan from "../../images/businessMan.png"
 import cashCoin from "../../images/cashCoin.png"
-import { ProgressBar } from  'react-loader-spinner'
+import { ProgressBar } from 'react-loader-spinner'
 
 
 
@@ -26,32 +26,34 @@ const Dasboard = () => {
     }
   ]
 
-  const [loading, setLoading] = useState(false)
+  const [isLoading, setIsLoading]= useState(false)
 
-  useEffect(()=>{
-    setLoading(true)
+ useEffect(()=>{
+setIsLoading(true)
     setTimeout(() => {
-      setLoading(false)
+      setIsLoading(false)
     }, 2000);
-  }, [])
+ },[])
+    
+  
 
 
   
 return (
   
       <div>
-        {loading ? (<div className="loader">
-          <ProgressBar
-            height="80"
-            width="80"
-            ariaLabel="progress-bar-loading"
-            wrapperStyle={{}}
-            wrapperClass="progress-bar-wrapper"
-            borderColor = '#FFA217'
-            barColor = '#CCA15F'
-          />
-        </div>) : (<>
-        <div className="dashboard">
+        {
+          isLoading ?(<div className="loader">
+            <ProgressBar
+                height="80"
+                width="80"
+                ariaLabel="progress-bar-loading"
+                wrapperStyle={{}}
+                wrapperClass="progress-bar-wrapper"
+                borderColor='#FFA217'
+                barColor='#CCA15F'
+            />
+        </div>):(<div className="dashboard">
           <div className="dashboard-header">
             <h1>
             USERNAME, congratulations! <br /> 
@@ -77,7 +79,10 @@ return (
           </div>
 
         </div>
-        </div></>)}
+        </div>)
+        }
+       
+        
         
       </div>
     );
