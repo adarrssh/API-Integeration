@@ -52,7 +52,7 @@ const MainNavbar = ({isLoggedIn, setIsLoggedIn,signupDetails}) => {
                                             <Dropdown.Menu>
                                                 <Dropdown.Item id='dropdown-link' ><NavLink  to="/profile">Profile</NavLink> </Dropdown.Item>
                                                 <Dropdown.Item id='dropdown-link'> <NavLink  to="/contactUs">Contact Us</NavLink></Dropdown.Item>
-                                                <Dropdown.Item id='dropdown-link'><NavLink onClick={()=>{localStorage.clear(); setIsLoggedIn(""); navigate("/login"); console.log(localStorage);}}>Logout</NavLink></Dropdown.Item>
+                                                <Dropdown.Item id='dropdown-link'><NavLink onClick={()=>{localStorage.clear(); setIsLoggedIn(""); navigate("/login");}}>Logout</NavLink></Dropdown.Item>
                                             </Dropdown.Menu>
                                         </Dropdown>: (<div className="button-grp">
                                                         <button onClick={()=>navigate('/login')} className='login-btn'>Login</button>

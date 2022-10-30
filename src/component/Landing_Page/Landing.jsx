@@ -8,12 +8,16 @@ import plans from "../../PlansData/plansData"
 import { ProgressBar } from  'react-loader-spinner'
 import ContactUs from '../contactUs/ContactUs';
 
-const Landing = () => {
+const Landing = ({isLoggedIn,setIsLoggedIn}) => {
+   
     const navigate = useNavigate()
      const [isLoading, setIsLoading]= useState(false)
+    
  
 
   useEffect(()=>{
+     localStorage.clear()
+     setIsLoggedIn("")
     setIsLoading(true)
 
     setTimeout(() => {

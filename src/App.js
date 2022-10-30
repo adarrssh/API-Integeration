@@ -48,7 +48,7 @@ function App() {
 
 
         <Routes>
-          <Route index path="/" element={<Landing />} />
+          <Route index path="/" element={<Landing isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
 
           <Route path="login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
           <Route path="signup" element={<Signup signupDetails={signupDetails} setsignupDetails={setsignupDetails} isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />} />
