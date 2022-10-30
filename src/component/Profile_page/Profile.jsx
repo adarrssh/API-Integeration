@@ -2,32 +2,50 @@ import React, { useState,useEffect } from 'react'
 import './css/profile.css'
 import close from "../../images/close.svg"
 import { ProgressBar } from  'react-loader-spinner'
+import axios  from 'axios'
 
 
 
 const Profile = ({signupDetails,setsignupDetails}) => {
     const [loading, setLoading] = useState(false)
 
-  useEffect(()=>{
-    setLoading(true)
+  const [details, setDetails] = useState()
 
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000);
+    const url = "https://growpital.herokuapp.com/auth/profile"
+
+  useEffect(()=>{
+    console.log("inside");
+
+    setLoading(true)
+    axios.get(url, { headers: { token: localStorage.getItem("token")  } })
+    .then(response => {
+        // If request is good...
+        console.log(response);
+        setsignupDetails(response.data.data)
+        setLoading(false)
+     })
+    .catch((error) => {
+        console.log(error);
+        setLoading(false)
+
+     });
+   
   }, [])
 
 
-    const user_data = {
-        email: "abc@gmail.com",
-        name: "Jhon Doe",
-        contact: "1234567890",
-        IFSC: "87654323456789",
-        account_number: "2345675467345234",
-        adhaar_number: "12345678909876"
-    }
+    // const user_data = {
+    //     email: "abc@gmail.com",
+    //     name: "Jhon Doe",
+    //     contact: "1234567890",
+    //     IFSC: "87654323456789",
+    //     account_number: "2345675467345234",
+    //     adhaar_number: "12345678909876"
+    // }
+
     const setValues=(e)=>{
         
     }
+    
     const [IsEditProfileOpen, setIsEditProfileOpen]= useState(false)
     const setAvatar=(e)=>{
         const src=URL.createObjectURL(e.target.files[0]);
@@ -39,7 +57,7 @@ const Profile = ({signupDetails,setsignupDetails}) => {
 
   return (
    <div>
-    {loading ? (<div className="loader">
+    { loading ? (<div className="loader">
           <ProgressBar
             height="80"
             width="80"
@@ -54,7 +72,7 @@ const Profile = ({signupDetails,setsignupDetails}) => {
     <div className='profile-sec'>
         <div className="edit-profile-sec" style={IsEditProfileOpen?  {display:"flex"}: {display:"none"}} >
             <div className="edit-profile-modal">
-                <img src={close} alt="" className='close-edit-profile' onClick={()=>{setIsEditProfileOpen(false)}}/>
+                <img src={close}  alt="" className='close-edit-profile' onClick={()=>{setIsEditProfileOpen(false)}}/>
                 <center>
                     <h1>Edit Profile</h1>
                 </center>
@@ -126,33 +144,33 @@ const Profile = ({signupDetails,setsignupDetails}) => {
         <div className="profile-sec-container">
             <div className="profile-avatar-container">
                 <div className="profile-avatar" id='profile-avatar'></div>
-                <p className="avatar-name">{user_data.name}</p>
+                <p className="avatar-name">{signupDetails.Name || ""}</p>
             </div>
             <div className="user-data-container">
                 <div className="profile-data-grp">
                     <div className="user-name user-detail-box">
                         <p>Name</p>
-                        <p className="profile-data-value">{user_data.name}</p>
+                        <p className="profile-data-value">{signupDetails.Name || ""}</p>
                     </div>
                     <div className="user-email user-detail-box">
                         <p>Email</p>
-                        <p className="profile-data-value">{user_data.email}</p>
+                        <p className="profile-data-value">{signupDetails.Email || ""}</p>
                     </div>
                     <div className="user-contact user-detail-box">
                         <p>Contact</p>
-                        <p className="profile-data-value">{user_data.contact}</p>
+                        <p className="profile-data-value">{signupDetails.Phone || ""}</p>
                     </div>
                     <div className="user-ifsc user-detail-box">
                         <p>IFSC Code</p>
-                        <p className="profile-data-value">{user_data.IFSC}</p>
+                        <p className="profile-data-value">{signupDetails.IFSC_Code || ""}</p>
                     </div>
                     <div className="user-account-num user-detail-box">
                         <p>Account Number</p>
-                        <p className="profile-data-value">{user_data.account_number}</p>
+                        <p className="profile-data-value">{signupDetails.Account_No || ""}</p>
                     </div>
                     <div className="user-adhaar-num user-detail-box">
                         <p>Adhaar Number</p>
-                        <p className="profile-data-value">{user_data.adhaar_number}</p>
+                        <p className="profile-data-value">{signupDetails.Aadhaar_Number || ""}</p>
                     </div>
 
                 </div>

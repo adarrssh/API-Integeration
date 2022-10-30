@@ -19,6 +19,7 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
     const navigate = useNavigate()
 
     const [IsRight, setIsRight] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
     const [userMail, setuserMail] = useState("");
     const [password, setpassword] = useState("");
 
@@ -28,6 +29,7 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
     const handleSubmit = (e) => {
 
         e.preventDefault();
+        setIsLoading(true)
         // if email and password is present
         console.log("clicked");
 
@@ -36,24 +38,36 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
                 Email: userMail,
                 Password: password
             })
+            // if response is good
                 .then((response) => {
-                    console.log(response.data.token);
+                    console.log(response);
                     setIsLoggedIn(true)
-                    localStorage.setItem("token", response.data.token)
-                })
-                .catch((err) => {
-                    console.log(err);
-                    setIsLoggedIn(false)
+                    setIsLoading(false)
 
-                    alert("some error occured")
+                    alert("Login Successfull")
+                    localStorage.setItem("token", response.data.token)
+                    navigate("/profile")
+                })
+            // if some error occured
+                .catch((err) => {
+                    setIsLoading(false)
+
+                    console.log(err);
+                    // setIsLoggedIn(false)
+                    alert(err.response.data.error)
                 })
 
         } else {
+            setIsLoading(false)
             alert("Invalid email")
         }
 
 
     };
+
+    if(isLoading){
+        return <h1>Loading..</h1>
+    }
     return (
         <>
             {/* <nav>
