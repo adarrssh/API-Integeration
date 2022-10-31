@@ -70,7 +70,7 @@ const MainNavbar = ({isLoggedIn, setIsLoggedIn,signupDetails}) => {
             {
                 isLoggedIn!=="" || null? (<div className="hamburger">
                 <img src={hamburger} alt="" onClick={()=>setIsnavOpen(true)}  />
-            </div>):(<div className="button-grp">
+            </div>):(<div className="button-grp button-grp-mobile">
           <button onClick={()=>navigate('/login')} className='login-btn'>Login</button>
           <button onClick={()=>navigate('/signup')}  className='signup-btn'>Signup</button>
         </div>)

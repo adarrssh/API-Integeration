@@ -202,6 +202,10 @@ a#dropdown-link:hover a {
     cursor: pointer;
 }
 
+.button-grp-mobile {
+    display: none;
+}
+
 .mobile-navlinks {
     z-index: 100;
     display: none;
@@ -253,6 +257,9 @@ a#dropdown-link:hover a {
 }
 
 @media screen and (max-width:770px) {
+    .button-grp-mobile {
+        display: block;
+    }
 
 
     .mobile-navlinks {
