@@ -15,6 +15,8 @@ const MainNavbar = ({isLoggedIn, setIsLoggedIn,signupDetails}) => {
     <div>
         <nav className="mobile-navlinks" id={IsnavOpen? "openNav":"closedNav"}  >
             <img src={close} alt="" id='close'  onClick={()=>setIsnavOpen(false)}/>
+           
+            
             <ul>
                     <li onClick={()=>{navigate("/dashboard");setIsnavOpen(false)}}>Dashboard</li>
                     <li onClick={()=>{navigate("/newInvestment");setIsnavOpen(false)}}>New Investment</li>
@@ -22,7 +24,7 @@ const MainNavbar = ({isLoggedIn, setIsLoggedIn,signupDetails}) => {
                     <li onClick={()=>{navigate("/wallet");setIsnavOpen(false)}}>Wallet</li>
                     <li onClick={()=>{navigate("/contactUs");setIsnavOpen(false)}}>Contact Us</li>
                     <li onClick={()=>{navigate("/profile");setIsnavOpen(false)}}>Profile</li>
-                    <li className='mobile-logout' onClick={()=>{localStorage.clear()}}>Logout</li>
+                    <li className='mobile-logout' onClick={()=>{localStorage.clear(); setIsLoggedIn(""); navigate("/login");setIsnavOpen(false)}}>Logout</li>
                 </ul>
         </nav>
        <nav className='main-navbar'>
@@ -65,9 +67,14 @@ const MainNavbar = ({isLoggedIn, setIsLoggedIn,signupDetails}) => {
 
                 </ul>
             </div>
-            <div className="hamburger">
+            {
+                isLoggedIn!=="" || null? (<div className="hamburger">
                 <img src={hamburger} alt="" onClick={()=>setIsnavOpen(true)}  />
-            </div>
+            </div>):(<div className="button-grp">
+          <button onClick={()=>navigate('/login')} className='login-btn'>Login</button>
+          <button onClick={()=>navigate('/signup')}  className='signup-btn'>Signup</button>
+        </div>)
+            }
        </nav>
     </div>
   )
