@@ -194,9 +194,8 @@ a#dropdown-link:hover a {
 }
 
 .hamburger {
-    margin-right: 3rem;
+    margin-right: 0rem;
     padding: 0.2rem 0.4rem;
-    background-color: var(--darkBlue);
     border-radius: 10px;
     display: none;
     color: white;
