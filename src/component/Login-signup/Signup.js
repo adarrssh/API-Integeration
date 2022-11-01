@@ -9,7 +9,7 @@ var validator = require("email-validator")
 
 
 function Signup({ signupDetails, setsignupDetails, setIsLoggedIn, IsLoggedIn }) {
-   
+
     const [isloading, setIsLoading] = useState(false)
 
     const url = 'https://growpital.herokuapp.com/auth/email'
@@ -72,12 +72,12 @@ function Signup({ signupDetails, setsignupDetails, setIsLoggedIn, IsLoggedIn }) 
                         <form className='signup-form' onSubmit={(e) => { submitSignupForm(e) }}>
                             <div className="signup-input register-input">
                                 <label htmlFor="Email">Email</label><br />
-                                <input name='Email' type="email" required value={signupDetails.Email || ""}
+                                <input placeholder='Your Email here' name='Email' type="email" required value={signupDetails.Email || ""}
                                     onChange={handleChange} />
                             </div>
                             <div className="signup-input register-input">
                                 <label htmlFor="Password">Password</label><br />
-                                <input name='Password' type="password" required value={signupDetails.Password || ""}
+                                <input pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}' name='Password' placeholder='Password(8-16 characters) ' minLength="8" maxLength="16" type="password" required value={signupDetails.Password || ""}
                                     onChange={handleChange} />
                             </div>
                             <input className='btn signupBtn' id='btn-signup' value="submit" type='submit' />
