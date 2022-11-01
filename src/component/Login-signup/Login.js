@@ -38,6 +38,7 @@ function Login({ isLoggedIn, setIsLoggedIn }) {
                 // if response is good
                 .then((response) => {
                     setIsLoading(false)
+                    console.log(response);
                     localStorage.setItem("token", response.data.token)
                     setIsLoggedIn(localStorage.getItem("token"))
                     navigate("/profile")

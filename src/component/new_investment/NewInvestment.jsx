@@ -7,7 +7,9 @@ import Payment from '../Payment/Payment'
 
 const NewInvestment = () => {
     // eslint-disable-next-line no-unused-vars
-    const [IsPlanSelected, setIsPlanSelected] = useState(false)
+    // const [IsPlanSelected, setIsPlanSelected] = useState(false)
+
+    const [PlanName , setPlanName] = useState("")
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -40,13 +42,13 @@ const NewInvestment = () => {
             <p className='landing-para landing-plan-para'>We Currently have three plans avialable  <br />
             Choose wisely as per your needs and investment capacity</p><br />
             <div className="investment-plans">
-                <PlanCards/>
+                <PlanCards setPlanName={setPlanName}/>
             </div>
         </div>
         
     </div>
        
-        <Payment/></>)}
+        <Payment PlanName={PlanName} setIsLoading={setIsLoading}/></>)}
     </div>
   )}
     

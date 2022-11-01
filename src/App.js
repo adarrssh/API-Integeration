@@ -14,13 +14,21 @@ import ProfileVerification from "./component/ProfileVerification/ProfileVerifica
 import MyInvestment from "./component/MyInvestment/MyInvestment";
 import MainNavbar from './component/Navbar/MainNavbar'
 import { ProgressBar } from 'react-loader-spinner'
+import axios from "axios";
 
 import { useEffect } from "react";
 
 function App() {
 
+  // const investurl = "http://localhost:3500/invest/investment";
+
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
-  const [isLoading, setIsLoading] = useState(false)
+
+  // total amount invest
+  const [Investment, setInvestment] = useState(0);
+
+  // const [isLoading, setIsLoading] = useState(false)
+
   const [signupDetails, setsignupDetails] = useState({
     Name: "",
     Email: "",
@@ -33,9 +41,11 @@ function App() {
   })
 
 
-  // useEffect(() => {
-  //   console.log(isLoggedIn);
-  // }, [isLoggedIn])
+  useEffect(()=>{
+    if(localStorage.getItem("token")){
+      // getinvest(investurl)
+    }
+  },[])
 
 
 
@@ -55,7 +65,7 @@ function App() {
 
           <Route path="dashboard" element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Dashboard />
+              <Dashboard Investment={Investment} setInvestment={setInvestment}/>
             </Protected>
           } />
           <Route path="contactUs" element={
@@ -93,7 +103,7 @@ function App() {
 
           <Route path="myInvestments" element={
             <Protected isLoggedIn={isLoggedIn}>
-              <MyInvestment />
+              <MyInvestment Investment={Investment}/>
             </Protected>
           } />
 

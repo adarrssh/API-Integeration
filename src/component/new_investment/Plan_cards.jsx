@@ -2,7 +2,9 @@ import React from 'react'
 import plans from '../../PlansData/plansData'
 import "./css/newInvestment.css"
 
-const PlanCards = () => {
+const PlanCards = ({setPlanName}) => {
+
+
   const submitSelectedPlan=(e)=>{
     e.preventDefault()
     console.log(e.target)
@@ -11,6 +13,7 @@ const PlanCards = () => {
   return (
     <>
       {plans.map((plan, index)=>{
+      
                     return(
                         <div className="investment-plan" key={index} >
                             <form onSubmit={submitSelectedPlan}>
@@ -23,7 +26,7 @@ const PlanCards = () => {
                             <input readOnly type="text" value={"Rate of Interest" + plan.ROI + "p.a."}/>
                             <br />
                             <input readOnly type="text" value={plan.maturity_period + "maturity period"}/>
-                            <button className='select-plan-btn' type='submit' value={plan.plan_name} >Select</button>
+                            <button className='select-plan-btn' type='submit' value={plan.plan_name}  onClick={ ()=>{ setPlanName(plan.plan_name)}}>Select</button>
                             </form>
                         </div>
                     )
