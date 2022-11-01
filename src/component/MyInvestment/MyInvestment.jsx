@@ -4,6 +4,8 @@ import { ProgressBar } from  'react-loader-spinner'
 import InvestMore from "./InvestMore";
 import TotalInvestment from "./TotalInvestment";
 import TotalProfit from "./TotalProfit";
+import ActiveInvestments from "./ActiveInvestments"
+import CompletedInvestments from "./CompletedInvestments";
 
 
 const MyInvestment = () => {
@@ -39,6 +41,14 @@ const MyInvestment = () => {
             <div className="total">
                 <TotalInvestment />
                 <TotalProfit />
+            </div>
+            <br />
+            <div className="active-investment-container px-5">
+              <ActiveInvestments/>
+            </div>
+            <br />
+            <div className="completed-investment-container px-5">
+              <CompletedInvestments/>
             </div>
             
         </div>)
