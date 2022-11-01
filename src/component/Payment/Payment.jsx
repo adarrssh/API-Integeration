@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 
-function Payment({ setIsLoading, PlanName }) {
+function Payment({ setIsLoading, PlanName, Roi }) {
   const [amount, setAmount] = useState(0);
 
   const navigate = useNavigate()
@@ -17,12 +17,14 @@ function Payment({ setIsLoading, PlanName }) {
     closePayment()
     setIsLoading(true)
 
-    console.log(amount, PlanName);
+    console.log(amount, PlanName, Roi);
 
     axios.post(url,
       {
         "Plan_Type": PlanName,
-        "Principal": amount
+        "Principal": amount,
+        "Roi":Roi
+
       }
       , { headers: { token: localStorage.getItem("token") } })
       .then(response => {

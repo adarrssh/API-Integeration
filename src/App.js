@@ -13,21 +13,15 @@ import Wallet from "./component/Wallet/Wallet";
 import ProfileVerification from "./component/ProfileVerification/ProfileVerification";
 import MyInvestment from "./component/MyInvestment/MyInvestment";
 import MainNavbar from './component/Navbar/MainNavbar'
-import { ProgressBar } from 'react-loader-spinner'
 import axios from "axios";
 
-import { useEffect } from "react";
+
 
 function App() {
 
-  // const investurl = "http://localhost:3500/invest/investment";
 
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
 
-  // total amount invest
-  const [Investment, setInvestment] = useState(0);
-
-  // const [isLoading, setIsLoading] = useState(false)
 
   const [signupDetails, setsignupDetails] = useState({
     Name: "",
@@ -40,14 +34,24 @@ function App() {
     IFSC_Code: "",
   })
 
-
-  useEffect(()=>{
-    if(localStorage.getItem("token")){
-      // getinvest(investurl)
-    }
+  useState(()=>{
+    fetchprofil()
   },[])
 
+  // fetching profile details
+  function fetchprofil(){
+    const url ="https://growpital.herokuapp.com/auth/profile"
+    axios.get(url, { headers: { token: localStorage.getItem("token")  } })
+    .then(response => {
+        // If request is good...
+        // console.log(response);
+        setsignupDetails(response.data.data)
+     })
+    .catch((error) => {
+        console.log(error);
 
+     });
+  }
 
   return (
     <div className="App">
@@ -65,7 +69,7 @@ function App() {
 
           <Route path="dashboard" element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Dashboard Investment={Investment} setInvestment={setInvestment}/>
+              <Dashboard/>
             </Protected>
           } />
           <Route path="contactUs" element={
@@ -103,7 +107,7 @@ function App() {
 
           <Route path="myInvestments" element={
             <Protected isLoggedIn={isLoggedIn}>
-              <MyInvestment Investment={Investment}/>
+              <MyInvestment />
             </Protected>
           } />
 

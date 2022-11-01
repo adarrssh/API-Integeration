@@ -5,46 +5,64 @@ import InvestMore from "./InvestMore";
 import TotalInvestment from "./TotalInvestment";
 import TotalProfit from "./TotalProfit";
 import axios from "axios";
+import ActiveInvestments from "./ActiveInvestments"
 
-
-const MyInvestment = ({Investment}) => {
+const MyInvestment = () => {
   const [isLoading, setIsLoading] = useState(false)
 
-  // total amount invested 
-  // const [Investment , setInvestment] = useState(0);
+  const [InvestArr, setInvestArr] = useState([]);
+  // Total profit
+  const [Profit, setProfit] = useState("")
 
-  // const url = "http://localhost:3500/invest/investment"
+  // total amount invested 
+  const [Investment , setInvestment] = useState(0);
+
+  const url = "http://localhost:3500/invest/investment"
 
   useEffect(() => {
 
-    // api call
-    // axios.get(url
-    //   , { headers: { token: localStorage.getItem("token") } })
-    //   .then(response => {
-
-    //     console.log(response);
-
-    //     let investArray = response.data.data;
-    //     let sum = 0;
-    //     investArray.forEach(element => {
-    //       sum += element.Principal;
-    //     });
+       // api call
+    axios.get(url
+      , { headers: { token: localStorage.getItem("token") } })
+      .then(response => {
 
 
-    //     setInvestment(sum)
+        setInvestArr(response.data.data)
 
-    //     setIsLoading(false)
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //     setIsLoading(false)
+        let investArray = response.data.data;
+        let sum = 0;
+        investArray.forEach(element => {
+          sum += element.Principal;
+        });
 
-    //   });
+        setInvestment(sum)
 
-      
+        callProfit(response)
 
+        setIsLoading(false)
+      })
+      .catch((error)=>{
+        setIsLoading(false)
+        console.log(error);
+      })
   }, [])
 
+
+  function callProfit(response){
+
+    let arr = response.data.data
+    let profit = 0;
+
+    // calculating profit
+    arr.forEach((el)=>{
+      // removing & sign from string
+      let roi = el.Roi.replace('%','')
+
+       profit = profit + el.Principal * (roi/100)
+    })
+
+    setProfit(profit)
+  }
 
   return (
     <>
@@ -67,7 +85,11 @@ const MyInvestment = ({Investment}) => {
             </div>
             <div className="total">
               <TotalInvestment Investment={Investment} />
-              <TotalProfit />
+              <TotalProfit Profit={Profit}/>
+            </div>
+
+            <div className="active-investment-container px-5">
+              <ActiveInvestments InvestArr={InvestArr}/>
             </div>
          
           </div>)
@@ -80,4 +102,4 @@ const MyInvestment = ({Investment}) => {
   )
 }
 
-export default MyInvestment;
+export default MyInvestment

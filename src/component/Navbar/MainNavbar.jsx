@@ -5,12 +5,13 @@ import hamburger from "../../images/hamburger.svg"
 import close from "../../images/close.svg"
 import { useNavigate, NavLink } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useEffect } from 'react'
 
 const MainNavbar = ({isLoggedIn, setIsLoggedIn,signupDetails}) => {
     const[IsnavOpen, setIsnavOpen]=useState(false);
     
     const navigate = useNavigate()
-  
+    
   return (
     <div>
         <nav className="mobile-navlinks" id={IsnavOpen? "openNav":"closedNav"}  >

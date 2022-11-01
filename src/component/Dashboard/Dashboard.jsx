@@ -8,8 +8,13 @@ import axios from 'axios'
 
 
 
-const Dasboard = ({ Investment, setInvestment }) => {
+const Dasboard = () => {
   const investurl = "http://localhost:3500/invest/investment";
+
+  // total amount invest
+  const [Investment, setInvestment] = useState("");
+  const [Profit, setProfit] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
 
   const dashboardData = [
     {
@@ -19,21 +24,21 @@ const Dasboard = ({ Investment, setInvestment }) => {
     },
     {
       cardName: "Total Payout",
-      cardValue: "₹7000",
+      cardValue: Investment + Profit,
       cardImg: cashCoin
     },
     {
       cardName: "Total Profit",
-      cardValue: "₹2000",
+      cardValue: Profit,
       cardImg: businessMan
     }
   ]
 
 
-  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     getinvest(investurl)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
 
@@ -45,14 +50,16 @@ const Dasboard = ({ Investment, setInvestment }) => {
       , { headers: { token: localStorage.getItem("token") } })
       .then(response => {
 
-        console.log(response);
+        // console.log(response);
 
         let investArray = response.data.data;
         let sum = 0;
+        // total amount ivested
         investArray.forEach(element => {
           sum += element.Principal;
         });
 
+        calProfit(response)
 
         setInvestment(sum)
 
@@ -64,6 +71,25 @@ const Dasboard = ({ Investment, setInvestment }) => {
 
       });
   }
+
+  function calProfit(response){
+
+    console.log(response.data.data);
+    let arr = response.data.data
+    let profit = 0;
+
+    // calculating profit
+    arr.forEach((el)=>{
+      // removing & sign from string
+      let roi = el.Roi.replace('%','')
+
+       profit = profit + el.Principal * (roi/100)
+    
+    })
+
+    setProfit(profit)
+  }
+
 
 
   return (

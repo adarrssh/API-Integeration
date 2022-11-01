@@ -11,6 +11,8 @@ const NewInvestment = () => {
 
     const [PlanName , setPlanName] = useState("")
 
+    const [Roi , setRoi] = useState("")
+
     const [isLoading, setIsLoading] = useState(false)
 
   useEffect(()=>{
@@ -42,13 +44,13 @@ const NewInvestment = () => {
             <p className='landing-para landing-plan-para'>We Currently have three plans avialable  <br />
             Choose wisely as per your needs and investment capacity</p><br />
             <div className="investment-plans">
-                <PlanCards setPlanName={setPlanName}/>
+                <PlanCards setPlanName={setPlanName} Roi={Roi} setRoi={setRoi}/>
             </div>
         </div>
         
     </div>
        
-        <Payment PlanName={PlanName} setIsLoading={setIsLoading}/></>)}
+        <Payment Roi={Roi} PlanName={PlanName} setIsLoading={setIsLoading}/></>)}
     </div>
   )}
     

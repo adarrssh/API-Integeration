@@ -11,11 +11,11 @@ const Profile = ({signupDetails,setsignupDetails}) => {
 
     // console.log(signupDetails);
 
-  const [details, setDetails] = useState()
 
     const url = "https://growpital.herokuapp.com/auth/profile"
 
   useEffect(()=>{
+    console.log("refresh");
    setIsLoading(true)
     axios.get(url, { headers: { token: localStorage.getItem("token")  } })
     .then(response => {

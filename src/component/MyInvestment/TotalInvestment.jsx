@@ -2,9 +2,9 @@ import React from "react";
 import './css/totalInvestment.css'
 import redWoman1 from '../../images/redSuitWoman.png'
 
-const totalInvest = 300000;
 
 const TotalInvestment = ({Investment}) => {
+
     return(
         <>
         <div className="container">

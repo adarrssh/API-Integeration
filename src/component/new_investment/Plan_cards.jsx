@@ -2,7 +2,7 @@ import React from 'react'
 import plans from '../../PlansData/plansData'
 import "./css/newInvestment.css"
 
-const PlanCards = ({setPlanName}) => {
+const PlanCards = ({setPlanName, setRoi}) => {
 
 
   const submitSelectedPlan=(e)=>{
@@ -26,7 +26,7 @@ const PlanCards = ({setPlanName}) => {
                             <input readOnly type="text" value={"Rate of Interest" + plan.ROI + "p.a."}/>
                             <br />
                             <input readOnly type="text" value={plan.maturity_period + "maturity period"}/>
-                            <button className='select-plan-btn' type='submit' value={plan.plan_name}  onClick={ ()=>{ setPlanName(plan.plan_name)}}>Select</button>
+                            <button className='select-plan-btn' type='submit' value={plan.plan_name}  onClick={ ()=>{ setPlanName(plan.plan_name); setRoi(plan.ROI)}}>Select</button>
                             </form>
                         </div>
                     )
