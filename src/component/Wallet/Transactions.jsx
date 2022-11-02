@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import './css/transactions.css'
 import Table from 'react-bootstrap/Table';
@@ -15,13 +16,12 @@ const Transactions = () => {
   const [transactions, setTransaction] = useState([]);
 
   const navigate = useNavigate();
-  const url = 'http://localhost:3500/invest/transaction'
+  const url = 'https://growpital.herokuapp.com/invest/transaction'
 
   useEffect(() => {
     axios.get(url, { headers: { token: localStorage.getItem("token") } })
       .then(response => {
         // If request is good...
-        console.log(response.data.data);
         setTransaction(response.data.data)
         setIsLoading(false)
       })

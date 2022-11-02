@@ -29,7 +29,7 @@ const Verification = ({ signupDetails, setsignupDetails, isLoggedIn, setIsLogged
                 console.log(response);
                 alert(response.data.message)
                 // setsignupDetails("")
-                navigate("/profile")
+                navigate("/login")
             })
             .catch((err) => {
                 console.log(err.response.data.message);
@@ -88,15 +88,15 @@ const Verification = ({ signupDetails, setsignupDetails, isLoggedIn, setIsLogged
                 <div className="data">
                     <label htmlFor="account">Account No.</label><br />
                     <input required name="Account_No"
-                        value={signupDetails.Account_No || ""} type="number" maxLength="12" minLength="8" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter your acc. no." onChange={handleChange} />
+                        value={signupDetails.Account_No || ""} type="number" maxLength={12} minLength={8} className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter your acc. no." onChange={handleChange} />
                 </div>
                 <div className="data">
                     <label htmlFor="adhaar">Adhaar No.</label><br />
-                    <input required name="Aadhaar_Number" minLength="12" maxLength="12" value={signupDetails.Aadhaar_Number || ""} type="number" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter your adhaar no." onChange={handleChange} />
+                    <input required name="Aadhaar_Number" minLength="12" maxLength={12} value={signupDetails.Aadhaar_Number || ""} type="number" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter your adhaar no." onChange={handleChange} />
                 </div>
                 <div className="data">
                     <label htmlFor="ifsc">IFSC Code</label><br />
-                    <input required type="text" pattern="^[A-Za-z]{4}[a-zA-Z0-9]{7}$" maxLength="11" minLength="11" name="IFSC_Code" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter IFSC code" value={signupDetails.IFSC_Code||""} onChange={handleChange}  />
+                    <input required type="text" pattern="^[A-Za-z]{4}[a-zA-Z0-9]{7}$" maxLength={11}minLength={11} name="IFSC_Code" className="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Enter IFSC code" value={signupDetails.IFSC_Code||""} onChange={handleChange}  />
                 </div>
                 <button id="submit" type="submit" className="btn btn-light my-btn" style={{ color: "white" }} >Submit</button>
             </form>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Dashboard from "./component/Dashboard/Dashboard"
@@ -23,18 +23,31 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem("token"));
 
 
+  // props for profile section
   const [signupDetails, setsignupDetails] = useState({
     Name: "",
     Email: "",
     Password: "",
     Phone: "",
-    Balance: "1000",
+    Balance: "",
     Aadhaar_Number: "",
     Account_No: "",
     IFSC_Code: "",
   })
 
-  useState(()=>{
+  // props for updating profile
+  const [updateItem, setUpdateItem] = useState({
+    Name: "",
+    Email: "",
+    Password: "",
+    Phone: "",
+    Balance: "",
+    Aadhaar_Number: "",
+    Account_No: "",
+    IFSC_Code: "",
+  })
+
+  useEffect(()=>{
     fetchprofil()
   },[])
 
@@ -46,12 +59,16 @@ function App() {
         // If request is good...
         // console.log(response);
         setsignupDetails(response.data.data)
+        setUpdateItem(response.data.data)
      })
     .catch((error) => {
         console.log(error);
 
      });
   }
+
+
+
 
   return (
     <div className="App">
@@ -69,7 +86,7 @@ function App() {
 
           <Route path="dashboard" element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Dashboard/>
+              <Dashboard signupDetails={signupDetails}/>
             </Protected>
           } />
           <Route path="contactUs" element={
@@ -79,20 +96,23 @@ function App() {
 
           <Route path="newInvestment" element={
             <Protected isLoggedIn={isLoggedIn}>
-              <NewInvestment />
+              <NewInvestment signupDetails={signupDetails}/>
             </Protected>
           } />
 
           <Route path="profile" element={
             <Protected isLoggedIn={isLoggedIn}>
               <Profile signupDetails={signupDetails}
-                setsignupDetails={setsignupDetails} />
+                setsignupDetails={setsignupDetails} 
+                updateItem={updateItem}
+                setUpdateItem={setUpdateItem}
+                />
             </Protected>
           } />
 
           <Route path="wallet" element={
             <Protected isLoggedIn={isLoggedIn}>
-              <Wallet />
+              <Wallet signupDetails={signupDetails}/>
             </Protected>
           } />
 

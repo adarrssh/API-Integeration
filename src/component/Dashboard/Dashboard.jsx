@@ -8,8 +8,8 @@ import axios from 'axios'
 
 
 
-const Dasboard = () => {
-  const investurl = "http://localhost:3500/invest/investment";
+const Dasboard = ({signupDetails}) => {
+  const investurl = "https://growpital.herokuapp.com/invest/investment";
 
   // total amount invest
   const [Investment, setInvestment] = useState("");
@@ -24,7 +24,7 @@ const Dasboard = () => {
     },
     {
       cardName: "Total Payout",
-      cardValue: Investment + Profit,
+      cardValue: Number(Investment) + Number(Profit),
       cardImg: cashCoin
     },
     {
@@ -74,7 +74,6 @@ const Dasboard = () => {
 
   function calProfit(response){
 
-    console.log(response.data.data);
     let arr = response.data.data
     let profit = 0;
 
@@ -87,7 +86,7 @@ const Dasboard = () => {
     
     })
 
-    setProfit(profit)
+    setProfit(profit.toFixed())
   }
 
 
@@ -109,7 +108,7 @@ const Dasboard = () => {
         </div>) : (<div className="dashboard">
           <div className="dashboard-header">
             <h1>
-              USERNAME, congratulations! <br />
+              {signupDetails.Name}, congratulations! <br />
               You now have access to your very own Dashboard.
             </h1>
             <div>

@@ -17,7 +17,7 @@ const MyInvestment = () => {
   // total amount invested 
   const [Investment , setInvestment] = useState(0);
 
-  const url = "http://localhost:3500/invest/investment"
+  const url = "https://growpital.herokuapp.com/invest/investment"
 
   useEffect(() => {
 
@@ -56,12 +56,23 @@ const MyInvestment = () => {
     // calculating profit
     arr.forEach((el)=>{
       // removing & sign from string
-      let roi = el.Roi.replace('%','')
+      
 
-       profit = profit + el.Principal * (roi/100)
+       profit = profit + el.Principal * returnROI(el)
     })
 
-    setProfit(profit)
+    setProfit(profit.toFixed())
+  }
+
+  function returnROI(el){
+
+    if(el.Plan_Type==='Basic'){
+      return 10/100
+    }else if(el.Plan_Type==='Medium'){
+      return 15/100
+    }else{
+      return 18/100
+    }
   }
 
   return (

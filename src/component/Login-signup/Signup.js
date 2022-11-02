@@ -12,7 +12,7 @@ function Signup({ signupDetails, setsignupDetails, setIsLoggedIn, IsLoggedIn }) 
 
     const [isloading, setIsLoading] = useState(false)
 
-    const url = 'https://growpital.herokuapp.com/auth/email'
+    const url = 'http://localhost:3500/auth/email'
     const navigate = useNavigate()
 
     const handleChange = e => {
@@ -42,7 +42,7 @@ function Signup({ signupDetails, setsignupDetails, setIsLoggedIn, IsLoggedIn }) 
                 .catch((err) => {
 
                     console.log(err);
-                    alert(err.response.data.error)
+                    alert("some error occured")
                     setIsLoading(false)
                 })
 

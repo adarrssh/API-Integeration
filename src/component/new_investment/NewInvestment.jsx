@@ -5,7 +5,7 @@ import { ProgressBar } from  'react-loader-spinner'
 import PlanCards from './Plan_cards'
 import Payment from '../Payment/Payment'
 
-const NewInvestment = () => {
+const NewInvestment = ({signupDetails}) => {
     // eslint-disable-next-line no-unused-vars
     // const [IsPlanSelected, setIsPlanSelected] = useState(false)
 
@@ -37,7 +37,7 @@ const NewInvestment = () => {
             />
         </div>):(<><div className="new-investment-sec">
         <h1 className='new-investment-heading'>
-            Hey USERNAME,<br />
+            Hey {signupDetails.Name},<br />
            Multiplying your money isn't as difficult as you think.
         </h1>
         <div className='new-investment-plans'>

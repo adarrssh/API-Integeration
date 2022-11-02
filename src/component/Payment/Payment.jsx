@@ -10,7 +10,7 @@ function Payment({ setIsLoading, PlanName, Roi }) {
 
   const navigate = useNavigate()
 
-  const url = 'http://localhost:3500/invest/investment'
+  const url = 'https://growpital.herokuapp.com/invest/investment'
 
   const submitInvestingAmmount = (e) => {
     e.preventDefault();
@@ -24,7 +24,6 @@ function Payment({ setIsLoading, PlanName, Roi }) {
         "Plan_Type": PlanName,
         "Principal": amount,
         "Roi":Roi
-
       }
       , { headers: { token: localStorage.getItem("token") } })
       .then(response => {

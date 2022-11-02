@@ -8,7 +8,16 @@ import Table from 'react-bootstrap/Table';
 const ActiveInvestments = ({ InvestArr }) => {
 
  
+  function returnROI(el){
 
+    if(el.Plan_Type==='Basic'){
+      return 10/100
+    }else if(el.Plan_Type==='Medium'){
+      return 15/100
+    }else{
+      return 18/100
+    }
+  }
 
   return (
     <>
@@ -29,8 +38,7 @@ const ActiveInvestments = ({ InvestArr }) => {
 
             {InvestArr.map((el, index) => {
 
-              let roi =  el.Roi.replace('%','')
-              let  profit = el.Principal*(Number(roi)/10)
+              let  profit = el.Principal*returnROI(el)
 
 
               return (
@@ -38,7 +46,7 @@ const ActiveInvestments = ({ InvestArr }) => {
                   <td>{el.Plan_Type}</td>
                   <td>{el.Principal}</td>
                   <td>{el.Roi}</td>
-                  <td >{profit}</td>
+                  <td >{profit.toFixed()}</td>
                 </tr>
               )
             })}
